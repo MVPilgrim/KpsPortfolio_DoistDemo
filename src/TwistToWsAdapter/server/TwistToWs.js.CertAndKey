@@ -6,14 +6,8 @@ var fs = require('fs');
 
 wsconnections = []
 
-//var privateKey  = fs.readFileSync('/home/ec2-user/KpsPortfolio/KpsPortfolio_DoistDemo/src/TwistToWsAdapter/server/kpsportfolio.info.key', 'utf8');
-//var certificate = fs.readFileSync('/home/ec2-user/KpsPortfolio/KpsPortfolio_DoistDemo/src/TwistToWsAdapter/server/kpsportfolio_info.crt', 'utf8');
-
-var ttwaPath   = '/home/ec2-user/KpsPortfolio/KpsPortfolio_DoistDemo/src/TwistToWsAdapter/server';
-var pkFile   = ttwaPath + '/kpsportfolio.info.key';
-var certFile = ttwaPath + '/kpsportfolio_info.crt';
-var privateKey  = fs.readFileSync(pkFile, 'utf8');
-var certificate = fs.readFileSync(certFile, 'utf8');
+var privateKey  = fs.readFileSync('TwistToWs_Key.pem', 'utf8');
+var certificate = fs.readFileSync('TwistToWs_Cert.pem', 'utf8');
 var credentials = { key: privateKey, cert: certificate };
 
 // Messages received on the http connection are forwarded
