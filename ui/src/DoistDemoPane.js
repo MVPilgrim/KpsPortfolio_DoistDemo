@@ -2,7 +2,7 @@ import React, {Component}       from 'react'
 import ReactDOM, {DOMComponent} from 'react-dom'
 
 import TopBar            from './TopBar.js'
-import Button            from './Button.js'
+import ButtonDoistDemo   from './ButtonDoistDemo.js'
 import DDPopupAbout      from './DDPopupAbout.js'
 import DDPopupInitDemo   from './DDPopupInitDemo.js'
 import DDPopupDirections from './DDPopupDirections.js'
@@ -171,11 +171,11 @@ export default class DoistDemoPane extends Component {
     return(
       <div>
         <TopBar className="DoistDemoTopBar displayHeading={true}"/>
-        <Button label="Init Demo" style={{"width": "60px"}} handleClick={this.handleInitButtonClick}/>
-        <Button label="Directions" style={{"left": "13.5%", "width": "60px"}} handleClick={this.handleDirectionsButtonClick}/>
-        <Button label="Clear Log" style={{"left": "17.5%", "width": "60px"}} handleClick={this.handleClearLogButtonClick}/>
-        <Button label="About" style={{"left": "21.5%"}} handleClick={this.handleAboutButtonClick}/>
-        <Button label="Dev Status" style={{"left": "24.0%", "width": "70px"}} handleClick={this.handleDevStatusButtonClick}/>
+        <ButtonDoistDemo label="Init Demo" style={{"width": "60px"}} handleClick={this.handleInitButtonClick}/>
+        <ButtonDoistDemo label="Directions" style={{"left": "13.5%", "width": "60px"}} handleClick={this.handleDirectionsButtonClick}/>
+        <ButtonDoistDemo label="Clear Log" style={{"left": "17.5%", "width": "60px"}} handleClick={this.handleClearLogButtonClick}/>
+        <ButtonDoistDemo label="About" style={{"left": "21.5%"}} handleClick={this.handleAboutButtonClick}/>
+        <ButtonDoistDemo label="Dev Status" style={{"left": "24.0%", "width": "70px"}} handleClick={this.handleDevStatusButtonClick}/>
         <div className="DoistDemoHeading">Doist Demo Message Log</div>
         <DisplayMsg msgArray={this.state.msgArray}/>
         <DDPopupAbout displayPopup={this.state.displayAbout} closeCallback={this.closeAbout}/>
