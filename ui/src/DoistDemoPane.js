@@ -108,7 +108,7 @@ export default class DoistDemoPane extends Component {
   }
 
   closeWebsocket() {
-    ws = this.getState("ws")
+    var ws = this.getState("ws")
     ws.onclose = function () {}; // disable onclose handler first
     ws.close();
   }
