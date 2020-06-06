@@ -1,3 +1,3 @@
-# KpsPortfolio
-Software development portfolio project using Doist products and other technologies.
+# KpsPortfolio Doist Demo
 
+This repository contains the backend components used in the Doist demonstration of the KpsPortfolio web site.
