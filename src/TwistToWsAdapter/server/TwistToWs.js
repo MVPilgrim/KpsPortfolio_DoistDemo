@@ -9,14 +9,14 @@ wsconnections = []
 //var privateKey  = fs.readFileSync('/home/ec2-user/KpsPortfolio/KpsPortfolio_DoistDemo/src/TwistToWsAdapter/server/kpsportfolio.info.key', 'utf8');
 //var certificate = fs.readFileSync('/home/ec2-user/KpsPortfolio/KpsPortfolio_DoistDemo/src/TwistToWsAdapter/server/kpsportfolio_info.crt', 'utf8');
 
-var ttwaPath   = '/home/ec2-user/KpsPortfolio/KpsPortfolio_DoistDemo/src/TwistToWsAdapter/server';
-var pkFile   = ttwaPath + '/kpsportfolio.info.key';
-var certFile = ttwaPath + '/kpsportfolio_info.crt';
+//var ttwaPath   = '/home/ec2-user/KpsPortfolio/KpsPortfolio_DoistDemo/src/TwistToWsAdapter/server/';
+var ttwaPath   = '';
+var pkFile   = ttwaPath + 'kpsportfolio.info.key';
+var certFile = ttwaPath + 'kpsportfolio_info.crt';
 var privateKey  = fs.readFileSync(pkFile, 'utf8');
 var certificate = fs.readFileSync(certFile, 'utf8');
 var credentials = { key: privateKey, cert: certificate };
 
-// Messages received on the http connection are forwarded
 // to the browser via the websocket connection.
 var httpsServer = https.createServer(credentials);
 httpsServer.listen(10001);
@@ -77,7 +77,7 @@ http.createServer(function (req, res) {
       resEndCode = "BAD"
     }
     res.writeHead(resCode, {'Content-Type': 'application/json'});
-    res.write('' ); 
+    res.write('' );
     res.end(resEndCode);
   });
 }).listen(10000,"0.0.0.0");
