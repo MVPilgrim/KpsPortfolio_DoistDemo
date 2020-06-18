@@ -13,18 +13,18 @@ def lambda_handler(event, context):
     except:
         statusCode = { 'statusCode': 400, 'body': json.dumps("Invalid cmd or wsid values.") }
         return(statusCode)
-        
+
     statusCode = ""
     if cmd == "invoke services":
-        postToTwist('TriggerServices Lambda function start wsid="' + wsid + '"')
+        postToTwistToWS('TriggerServices Lambda function start wsid="' + wsid + '"')
         # Do processing here: read json file, post file to first component.
-        postToTwist('TriggerServices Lambda function end wsid="' + wsid + '"')
+        postToTwistToWS('TriggerServices Lambda function end wsid="' + wsid + '"')
         statusCode = { 'statusCode': 200, 'body': json.dumps('ok') }
     else:
-        statusCode = { 'statusCode': 400, 'body': json.dumps("Invalid command: " + cmd) }  
-    
+        statusCode = { 'statusCode': 400, 'body': json.dumps("Invalid command: " + cmd) }
+
     return(statusCode)
-    
+
 def postToTwist(msg):
     connection = http.client.HTTPSConnection('twist.com')
     headers = {'Content-type': 'application/json'}
@@ -36,4 +36,15 @@ def postToTwist(msg):
     response = connection.getresponse()
     print("Twist response: " + response.read().decode())
     connection.close()
-    
+
+def postToTwistToWS(msg):
+    connection = http.client.HTTPSConnection('https://ov8begkke9.execute-api.us-east-1.amazonaws.com')
+    headers = {'Content-type': 'application/json'}
+    msgText = {'content': msg}
+    jsonMsgText = json.dumps(msgText)
+    print("jsonMsgText: " + jsonMsgText)
+    connection.request('POST', '/prod/triggerdoistdemo',
+    jsonMsgText, headers)
+    response = connection.getresponse()
+    print("API Gateway Response: " + response.read().decode())
+    connection.close()
